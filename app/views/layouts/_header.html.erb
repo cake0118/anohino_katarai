@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 d-flex justify-content-center align-items-center">
+      <%= link_to root_path do %>
+        <%= image_tag 'あの日の語らい.png', alt: 'あの日の語らい', class: 'img-fluid' %>
+      <% end %>
+    </div>
+    <div class="col-9">
+        <nav class="col-12">
+          <ul class="nav justify-content-end">
+            <%# 管理者としてログインしている時 %>
+            <% if admin_signed_in? %>
+              <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ゲーム一覧", admin_games_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ハード一覧", admin_hardwares_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark m-3' %>
+
+            <%# ユーザーとしてログインしている時 %>
+            <% elsif user_signed_in? %>
+              <%= link_to "マイページ", user_path(current_user), class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ゲーム一覧", games_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark m-3' %>
+
+            <%# 非ログイン時 %>
+            <% else %>
+              <%= link_to "About", about_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ゲーム一覧", games_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ログイン", new_user_session_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-outline-dark m-3' %>
+            <% end %>
+
+          </ul>
+        </nav>
+    </div>
+  </div>
+</div>
