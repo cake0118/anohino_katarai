@@ -1,27 +1,27 @@
 <div class="container">
 
   <div class="row m-3">
-    <h1><%= @user.hundle_name %>のマイページ</h1>
+    <h1><%= @user.handle_name %>のマイページ</h1>
   </div>
 
-  <div class="row justify-content-center m-3">
+  <div class="row m-3">
     <div class="col-4 mr-3">
-      <%= link_to "H.N変更", users_edit_path(@user), class: 'btn btn-success' %> 
+      <%= link_to "H.N変更", edit_user_path(@user), class: 'btn btn-success w-100' %> 
     </div>
     <div class="col-4 ml-3">
-      <%= link_to "退会する", user_unsubscribe(current_user), class: 'btn btn-danger' %>
+      <%= link_to "退会する", unsubscribe_user_path(current_user), class: 'btn btn-danger w-100' %>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row m-5">
     <h2>投稿一覧</h2>
   </div>
 
-  <div class="row">
-    <%= link_to "新規登録", games_new_path, class: 'btn btn-primary' %>
+  <div class="row m-3">
+    <%= link_to "新規登録", new_game_path, class: 'btn btn-primary' %>
   </div>
 
-  <div class="row">
+  <div class="row m-3">
    <table class="table">
     <thead>
       <tr>
@@ -32,12 +32,12 @@
     <tbody>
       <% @games.each do |game| %>
         <tr>
-          <td><%= link_to game.title, games_show_path(game) %></td>
+          <td><%= link_to game.title, game_path(game) %></td>
           <td><%= game.body %></td>
         </tr>
+      <% end %>
     </tbody>
    </table>
-
   </div>
   
   </div>

@@ -4,6 +4,21 @@
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <%= f.label :氏名（サイト内では使用しません） %><br />
+    <%= f.text_field :name, placefolder: "令和  花子" %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :フリガナ（サイト内では使用しません） %><br />
+    <%= f.text_field :name_kana, placefolder: "レイワ  ハナコ" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ハンドルネーム（サイト内で使用します） %><br />
+    <%= f.text_field :handle_name, placefolder: "ローズ" %>
+  </div>
+  
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
