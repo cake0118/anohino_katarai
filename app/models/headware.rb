@@ -1,0 +1,2 @@
+class Headware < ApplicationRecord
+end

@@ -1,0 +1,44 @@
+<div class="container">
+
+  <div class="row m-3">
+    <h1><%= @user.hundle_name %>のマイページ</h1>
+  </div>
+
+  <div class="row justify-content-center m-3">
+    <div class="col-4 mr-3">
+      <%= link_to "H.N変更", users_edit_path(@user), class: 'btn btn-success' %> 
+    </div>
+    <div class="col-4 ml-3">
+      <%= link_to "退会する", user_unsubscribe(current_user), class: 'btn btn-danger' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2>投稿一覧</h2>
+  </div>
+
+  <div class="row">
+    <%= link_to "新規登録", games_new_path, class: 'btn btn-primary' %>
+  </div>
+
+  <div class="row">
+   <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">タイトル</th>
+        <th scope="col">概要</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= link_to game.title, games_show_path(game) %></td>
+          <td><%= game.body %></td>
+        </tr>
+    </tbody>
+   </table>
+
+  </div>
+  
+  </div>
+</div>
