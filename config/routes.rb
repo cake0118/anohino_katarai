@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # urlにpublicをつけない
   scope module: :public do
     resources :users, only: [:show, :index, :update]
+    resources :games, only: [:new, :show, :index, :create]
   end
 
   get '/users/unsubscribe', to: 'public/users#unsubscribe', as: "unsubscribe_user"

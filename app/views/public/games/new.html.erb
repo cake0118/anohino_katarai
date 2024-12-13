@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <h2>新規投稿</h2>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @game, url: games_path do |f| %>
+      <%= f.label :ゲーム名 %>
+      <%= f.text_field :title, placefolder: "ゲーム名" %>
+      <%= f.label :内容 %>
+      <%= f.text_area :body, placefolder: "どのようなゲームか教えてね" %>
+      <%= f.submit "投稿する", class: "btn btn-success" %>
+    <% end %>
+
+  </div>
+
+</div>
