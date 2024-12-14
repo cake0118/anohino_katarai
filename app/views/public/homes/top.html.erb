@@ -1,0 +1,17 @@
+<div class="container text-center">
+
+  <div class="row m-5">
+    <h1 class="w-100">ようこそ、語らいの場へ</h1>
+  </div>
+
+  <div class="row m-3">
+    <div class="w-100 mb-2">すでに利用したことがある人はこちらからお入りください</div>
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-success w-100 mb-3" %>
+  </div>
+
+  <div class="row m-3">
+    <div class="w-100 mb-2">初めて来られた方はこちらからお入りください</div>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary w-100" %>
+  </div>
+
+</div>
