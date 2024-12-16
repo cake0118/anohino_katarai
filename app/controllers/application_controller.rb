@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     case resource
     when Admin
       new_admin_session
-    when Customer
+    when User
       root_path
     else
       root_path
