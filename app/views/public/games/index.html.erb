@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h1>ゲーム一覧</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+
+    </div>
+
+    <div class="col-8">
+      <div class="table">
+        <thead>
+          <tr>
+            <th scope="col">タイトル</th>
+            <th scope="col">ハード</th>
+            <th scope="col">内容</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @games.each do |game| %>
+            <tr>
+              <td><%= link_to game.title, game_path(game) %></td>
+              <td><%= game.headware.name %></td>
+              <td><%= game.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+    </div>
+  </div>
+</div>
