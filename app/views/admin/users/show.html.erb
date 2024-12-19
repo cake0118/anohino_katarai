@@ -15,7 +15,24 @@
 
         <tr>
           <th scope="row">フリガナ</th>
-          
+          <td><%= @user.name_kana %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">ハンドルネーム</th>
+          <td><%= @user.handle_name %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">メールアドレス</th>
+          <td><%= @user.mail %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">ステータス</th>
+          <td class="<%= user.is_active ? 'text-success' : 'text- muted' %>">
+            <%= user_status(@user) %>
+          </td>
         </tr>
       </tbody>
     </table>
