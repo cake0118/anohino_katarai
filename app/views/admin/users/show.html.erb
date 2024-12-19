@@ -25,16 +25,22 @@
 
         <tr>
           <th scope="row">メールアドレス</th>
-          <td><%= @user.mail %></td>
+          <td><%= @user.email %></td>
         </tr>
 
         <tr>
           <th scope="row">ステータス</th>
-          <td class="<%= user.is_active ? 'text-success' : 'text- muted' %>">
+          <td class="<%= @user.is_active ? 'text-success' : 'text- muted' %>">
             <%= user_status(@user) %>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <%= link_to "編集", edit_admin_user_path(@user), class: "btn btn-success w-100" %>
+    </div>
   </div>
 </div>

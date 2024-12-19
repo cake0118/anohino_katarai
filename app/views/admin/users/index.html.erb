@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row m-5">
+    <h1>利用者一覧</h1>
+  </div>
+
+  <div class="row m-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">名前</th>
+          <th scope="col">フリガナ</th>
+          <th scope="col">メールアドレス</th>
+          <th scope="col">ステータス</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= user.name_kana %></td>
+            <td><%= user.email %></td>
+            <td class="<%= user.is_active ? 'text-success' : 'text-muted' %>">
+              <%= user_status(user) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

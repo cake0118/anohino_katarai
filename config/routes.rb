@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # urlにadminをつける
   namespace :admin do
     resources :headwares, only: [:index, :create]
+    resources :users, only: [:edit, :show, :index, :update]
   end
 
   
