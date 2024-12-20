@@ -1,0 +1,10 @@
+<h2>検索結果</h2>
+<% if @games.present? %>
+  <ul>
+    <% @games.each do |game| %>
+      <li><%= game.name_kana %> (<%= game.name %>)</li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>該当する結果はありません。</p>
+<% end %>
