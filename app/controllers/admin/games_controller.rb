@@ -20,7 +20,7 @@ class Admin::GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :body)
+    params.require(:game).permit(:title, :body, :user_id, :headware_id)
   end
 
 end
