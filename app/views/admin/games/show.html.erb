@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row m-5">
+    <h1>詳細画面</h1>
+  </div>
+
+  <div class="row m-5">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">タイトル</th>
+          <td><%= @game.title %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">ハード</th>
+          <td><%= @game.headware.name %></td>
+        </tr>
+
+        <tr>
+          <th scope="row">内容</th>
+          <td><%= @game.body %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

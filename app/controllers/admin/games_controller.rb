@@ -1,10 +1,10 @@
 class Admin::GamesController < ApplicationController
   def index
-    @game = Game.find(params[:id])
+    @games = Game.all
   end
 
   def show
-    @games = Game.all
+    @game = Game.find(params[:id])
   end
 
   def edit
