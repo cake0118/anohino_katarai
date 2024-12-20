@@ -10,7 +10,9 @@
           <ul class="nav justify-content-end">
             <%# 管理者としてログインしている時 %>
             <% if admin_signed_in? %>
-              <%= link_to "ハード一覧", admin_hardwares_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ユーザー一覧", admin_users_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ゲーム一覧", admin_games_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ハード一覧", admin_headwares_path, class: 'btn btn-outline-dark m-3' %>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark m-3' %>
 
             <%# ユーザーとしてログインしている時 %>

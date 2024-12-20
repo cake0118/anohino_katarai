@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :headwares, only: [:index, :create]
     resources :users, only: [:edit, :show, :index, :update]
+    resources :games, only: [:edit, :show, :index, :update]
   end
 
   
