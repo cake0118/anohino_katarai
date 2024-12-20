@@ -1,21 +1,22 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: resource, url: registration_path(resource_name), local: true de |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :氏名（サイト内では使用しません） %><br />
-    <%= f.text_field :name, placefolder: "令和  花子" %>
+    <%= f.text_field :name, placeholder: "令和  花子" %>
   </div>
   
   <div class="field">
     <%= f.label :フリガナ（サイト内では使用しません） %><br />
-    <%= f.text_field :name_kana, placefolder: "レイワ  ハナコ" %>
+    <%= f.text_field :name_kana, id: "furigana-input", class: 'form-control', placeholder: "レイワ  ハナコ" %>
   </div>
 
   <div class="field">
     <%= f.label :ハンドルネーム（サイト内で使用します） %><br />
-    <%= f.text_field :handle_name, placefolder: "ローズ" %>
+    <%= f.text_field :handle_name, placeholder: "ローズ" %>
   </div>
   
   <div class="field">

@@ -21,6 +21,6 @@ class Public::GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:title, :body, :user_id, :headware_id)
+    params.require(:game).permit(:title, :title_kana, :body, :user_id, :headware_id)
   end
 end
