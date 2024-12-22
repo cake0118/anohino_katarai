@@ -1,0 +1,30 @@
+<h1>
+  <% if @query.present? %>
+    "<%= @query %>" に関連する検索結果
+  <% elsif @kana.present? %>
+    <%= @kana %>行の検索結果
+  <% else %>
+    検索結果
+  <% end %>
+</h1>
+
+<% if @games.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>タイトル</th>
+        <th>アクション</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><%= game.title %></td>
+          <td><%= link_to '詳細', game_path(game), class: "btn btn-info" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>該当するゲームはありません。</p>
+<% end %>
