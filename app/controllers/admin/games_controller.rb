@@ -1,9 +1,4 @@
-class Public::GamesController < ApplicationController
-
-  def new
-    @game = Game.new
-  end
-
+class Admin::GamesController < ApplicationController
   def index
     @games = Game.all
   end
@@ -12,10 +7,14 @@ class Public::GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  def create
-    @game = current_user.games.new(game_params)
-    @game.save
-    redirect_to user_path(current_user)
+  def edit
+    @game = Game.find(params[:id])
+  end
+
+  def update
+    @game = Game.find(params[:id])
+    @game.update
+    redirect_to admin_game_path(@game)
   end
 
   private
@@ -23,4 +22,5 @@ class Public::GamesController < ApplicationController
   def game_params
     params.require(:game).permit(:title, :title_kana, :body, :user_id, :headware_id)
   end
+
 end

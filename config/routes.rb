@@ -17,14 +17,17 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :users, only: [:show, :index, :edit, :update]
     resources :games, only: [:new, :show, :index, :create]
+    resources :searches, only: [:index]
   end
 
-  get '/users/unsubscribe', to: 'public/users#unsubscribe', as: "unsubscribe_user"
-  patch '/users/withdraw', to: 'public/users#withdraw', as: "withdraw_user"
+  get '/users/:id/unsubscribe', to: 'public/users#unsubscribe', as: "unsubscribe_user"
+  patch '/users/:id/withdraw', to: 'public/users#withdraw', as: "withdraw_user"
 
   # urlにadminをつける
   namespace :admin do
     resources :headwares, only: [:index, :create]
+    resources :users, only: [:edit, :show, :index, :update]
+    resources :games, only: [:edit, :show, :index, :update]
   end
 
   

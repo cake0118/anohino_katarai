@@ -13,6 +13,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"; 
 
+import './furigana_converter';
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
