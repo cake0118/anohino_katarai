@@ -20,8 +20,8 @@ Rails.application.routes.draw do
     resources :searches, only: [:index]
   end
 
-  get '/users/unsubscribe', to: 'public/users#unsubscribe', as: "unsubscribe_user"
-  patch '/users/withdraw', to: 'public/users#withdraw', as: "withdraw_user"
+  get '/users/:id/unsubscribe', to: 'public/users#unsubscribe', as: "unsubscribe_user"
+  patch '/users/:id/withdraw', to: 'public/users#withdraw', as: "withdraw_user"
 
   # urlにadminをつける
   namespace :admin do
