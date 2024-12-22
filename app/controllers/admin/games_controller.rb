@@ -13,7 +13,7 @@ class Admin::GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update
+    @game.update(game_params)
     redirect_to admin_game_path(@game)
   end
 
