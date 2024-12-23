@@ -16,7 +16,15 @@ Rails.application.routes.draw do
   # urlにpublicをつけない
   scope module: :public do
     resources :users, only: [:show, :index, :edit, :update]
-    resources :games, only: [:new, :show, :index, :create]
+    resources :games, only: [:new, :show, :index, :create] do
+      resources :groups, only: [:new, :create, :show] do #indexはgames/showページに表示する為なし
+        member do
+          post 'join', to: 'groups#join'
+          delete 'leave', to: 'groups#leave'
+        end
+        resources :comments, only: [:create, :destroy, :update]
+      end
+    end
     resources :searches, only: [:index]
   end
 
