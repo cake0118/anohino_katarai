@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row d-flex content-center">
+    <div class="col-4 m-4">
+      <h1><%= @group.title %></h1>
+    </div>
+
+    <div class="col-4 m-4">
+      <%= link_to "タイトル変更", edit_admin_game_group_path(@group.game, @group), class: 'btn btn-primary w-100' %>
+    </div>
+  </div>
+
+  <div class="row m-3">
+    <h2>コメント一覧</h2>
+  </div>
+
+  <div class="row">
+    <table class="table">
+      <tbody>
+        <% @comments.each do |comment| %>
+          <tr>
+            <td><%= comment.user.handle_name %></td>
+          </tr>
+
+          <tr>
+            <td><%= comment.body %></td>
+            <td>
+              <%= link_to "削除", admin_game_group_comment_path(@group.game, @group, comment),
+                  method: :delete,
+                  data: { confirm: '本当に削除しますか？' }, 
+                  class: 'btn btn-sm btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

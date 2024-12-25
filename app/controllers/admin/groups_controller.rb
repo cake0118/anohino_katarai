@@ -2,7 +2,7 @@ class Admin::GroupsController < ApplicationController
 
   def show
     @group =Group.find(params[:id])
-    @comments = @groups.comments
+    @comments = @group.comments
   end
   
   def edit
