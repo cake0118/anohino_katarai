@@ -5,6 +5,7 @@ class Admin::GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @groups = @game.groups
   end
 
   def edit

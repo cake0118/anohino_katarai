@@ -29,4 +29,17 @@
       <%= link_to "編集", edit_admin_game_path(@game), class: 'btn btn-primary w-100' %>
     </div>
   </div>
+
+  <div class="row m-5">
+    <table class="table">
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.title %></td>
+            <td><%= link_to "内容を見る", admin_game_group_path(group.game, group), class: 'btn btn-success' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
