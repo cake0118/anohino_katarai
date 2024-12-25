@@ -12,7 +12,14 @@ class Public::GroupsController < ApplicationController
     @group.creator_id = current_user.id
 
     if @group.save
-      redirect_to game_group_path(@game, @group), notice: 'グループを作成しました。'
+      @group_membership = @group.group_memberships.create(user: current_user)
+      if @group_membership.persisted?
+        redirect_to game_group_path(@game, @group), notice: 'グループを作成しました。'
+      else
+        # 参加登録が失敗した場合はグループも削除
+        @group.destroy
+        render :new, alert: 'グループ作成に失敗しました。'
+      end
     else
       render :new, alert: 'グループ作成に失敗しました。'
     end

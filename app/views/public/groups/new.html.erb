@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row m-5">
+      <h1>グループ新規作成</h1>
+    </div>
+
+    <%= form_with model: @group, url: game_groups_path do |f| %>
+      <%# 入力フォームは横一列、登録ボタンは入力欄の下に配置したい %>
+      <div class="row m-3">
+        <div class="col-3">
+          <%= f.label :グループ名 %>
+        </div>
+        <div class="col-3">
+          <%= f.text_field :title, placeholder: "〇〇について話そう！", class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="row m-3">
+        <div class="col-3 offset-3">
+          <%= f.submit "グループを作成する", class: 'btn btn-success' %>
+        </div>
+      </div>
+    <% end %>
+</div>

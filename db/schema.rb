@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2024_12_23_033641) do
 
   create_table "groups", force: :cascade do |t|
     t.integer "creator_id", null: false
-    t.integer "group_id", null: false
+    t.integer "game_id", null: false
     t.string "title", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
