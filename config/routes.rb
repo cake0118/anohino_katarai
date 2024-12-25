@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
   # urlにpublicをつけない
   scope module: :public do
-    resources :users, only: [:show, :index, :edit, :update]
+    post 'guest_sign_in', to: 'sessions#guest_sign_in'
+    resources :users, only: [:show, :index, :edit, :update] 
     resources :games, only: [:new, :show, :index, :create] do
       resources :groups, only: [:new, :create, :show] do #indexはgames/showページに表示する為なし
         member do

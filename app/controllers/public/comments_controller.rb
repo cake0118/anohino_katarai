@@ -1,6 +1,7 @@
 class Public::CommentsController < ApplicationController
   before_action :set_group
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :restrict_guest_user, only: [:create, :update, :destroy]
 
 
   def create
@@ -46,6 +47,12 @@ class Public::CommentsController < ApplicationController
   end
 
   private
+
+  def restrict_guest_user
+    if current_user.guest?
+      redirect_to root_path, alert: 'ゲストユーザーはこの操作を行えません。'
+    end
+  end
 
   def set_group
     @group = Group.find(params[:group_id])
