@@ -1,6 +1,7 @@
 class Group < ApplicationRecord
 
   belongs_to :game
+  has_many :comments, dependent: :destroy
 
   # creator_idを外部キーとして作成時に登録したuserを参照する
   belongs_to :creator, class_name: 'User', foreign_key: :creator_id

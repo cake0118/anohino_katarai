@@ -1,0 +1,5 @@
+<%# コメント一覧の末尾に新しいコメントを追加 %>
+document.querySelector('table tbody').insertAdjacentHTML('beforeend', '<%= j render partial: "public/comments/comment", locals: { comment: @comment } %>');
+
+<%# コメントフォームをクリア %>
+document.querySelector('form').reset();

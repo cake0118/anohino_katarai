@@ -22,7 +22,7 @@ Rails.application.routes.draw do
           post 'join', to: 'groups#join'
           delete 'leave', to: 'groups#leave'
         end
-        resources :comments, only: [:create, :destroy, :update]
+        resources :comments, only: [:create, :destroy, :edit, :update]
       end
     end
     resources :searches, only: [:index]
