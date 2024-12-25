@@ -14,4 +14,9 @@ class User < ApplicationRecord
   has_many :group_memberships, dependent: :destroy
   has_many :join_groups, through: :group_memberships, source: :group
   
+
+  def guest?
+    email == 'guest@example.com'
+  end
+  
 end

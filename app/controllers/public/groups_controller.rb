@@ -1,6 +1,7 @@
 class Public::GroupsController < ApplicationController
   before_action :set_game
   before_action :set_group, only: [:show, :join, :leave]
+  before_action :restrict_guest_user, only: [:create]
 
   def new
     @group = @game.groups.new
@@ -59,6 +60,12 @@ class Public::GroupsController < ApplicationController
   end
 
   private
+
+  def restrict_guest_user
+    if current_user.guest?
+      redirect_to root_path, alert: 'ゲストユーザーはこの操作を行えません。'
+    end
+  end
 
   def set_game
     @game = Game.find(params[:game_id])

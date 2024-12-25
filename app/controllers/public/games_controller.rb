@@ -1,5 +1,7 @@
 class Public::GamesController < ApplicationController
 
+  before_action :restrict_guest_user, only: [:new, :create]
+
   def new
     @game = Game.new
   end
@@ -20,6 +22,12 @@ class Public::GamesController < ApplicationController
   end
 
   private
+
+  def restrict_guest_user
+    if current_user.guest?
+      redirect_to root_path, alert: 'ゲストユーザーはこの操作を行えません。'
+    end
+  end
 
   def game_params
     params.require(:game).permit(:title, :title_kana, :body, :user_id, :headware_id)

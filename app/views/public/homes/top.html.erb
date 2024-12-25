@@ -14,4 +14,9 @@
     <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary w-100" %>
   </div>
 
+  <div class="row m-3">
+    <div class="w-100 mb-2">お試しの方はこちら(投稿等はできません)</div>
+    <%= link_to "ゲストログイン", guest_sign_in_path, method: :post, class: 'btn btn-secondary w-100' %>
+  </div>
+
 </div>

@@ -13,9 +13,14 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
+   # ゲストログイン用
+   devise_scope :user do
+    post 'guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+
   # urlにpublicをつけない
   scope module: :public do
-    resources :users, only: [:show, :index, :edit, :update]
+    resources :users, only: [:show, :index, :edit, :update] 
     resources :games, only: [:new, :show, :index, :create] do
       resources :groups, only: [:new, :create, :show] do #indexはgames/showページに表示する為なし
         member do
