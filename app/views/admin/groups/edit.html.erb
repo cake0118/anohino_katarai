@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row m-5">
+    <h1>title編集</h1>
+  </div>
+  <%= form_with model:@group, url: admin_game_group_path(@group.game, @group), local: true do |f| %>
+    <div class="row m-3">
+      <div class="col-3">
+        <%= f.label :グループ名 %>
+      </div>
+      <div class="col-3">
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col-3 offset-3">
+        <%= f.submit "変更する", class: 'btn btn-success w-100' %>
+      </div>
+    </div>
+  <% end %>
+</div>
