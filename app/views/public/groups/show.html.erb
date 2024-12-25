@@ -1,0 +1,19 @@
+<div class="container">
+  <%# 左端と右端に設置したい %>
+  <div class="row">
+    <div class="col-auto mr-auto">
+      <h1><%= @group.title %></h1>
+    </div>
+    <div class="col-auto col-3">
+      <%= button_to "退出する", leave_game_group_path(@group.game, @group), method: :delete, class: 'btn btn-secondary' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <%# コメント一覧 %>
+  </div>
+
+  <div class="row">
+    <%# コメント投稿機能 %>
+  </div>
+</div>

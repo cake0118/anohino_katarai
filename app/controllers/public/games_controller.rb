@@ -10,6 +10,7 @@ class Public::GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @groups = @game.groups
   end
 
   def create
