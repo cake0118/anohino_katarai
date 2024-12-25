@@ -15,6 +15,11 @@
               <%= link_to "ハード一覧", admin_headwares_path, class: 'btn btn-outline-dark m-3' %>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-outline-dark m-3' %>
 
+            <%# ゲストユーザーとしてログインしている時 %>
+            <% elsif user_signed_in? && current_user.email == 'guest@example.com' %>
+              <%= link_to "ゲーム一覧", games_path, class: 'btn btn-outline-dark m-3' %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-outline-dark m-3' %>
+
             <%# ユーザーとしてログインしている時 %>
             <% elsif user_signed_in? %>
               <%= link_to "マイページ", user_path(current_user), class: 'btn btn-outline-dark m-3' %>
