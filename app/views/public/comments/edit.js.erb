@@ -1,0 +1,2 @@
+<%# 既存のコメント表示を編集フォームに置き換える %>
+document.querySelector(`#comment-body-<%= @comment.id %>`).outerHTML = '<%= j render partial: "public/comments/edit_form", locals: { comment: @comment } %>';

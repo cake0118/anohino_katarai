@@ -1,0 +1,21 @@
+<%# 任意のコメントを非同期で編集するためidをつける %>
+<tr id="comment-<%= comment.id %>">
+  <td><%= comment.user.handle_name %></td>
+</tr>
+
+<tr id="comment-body-<%= comment.id %>">
+  <td><%= comment.body %></td>
+  <td>
+    <% if comment.user == current_user %>
+      <%# 編集ボタンの配備、クリックでフォームへの差し替え、非同期通信で実装 %>
+      <%= link_to "編集", edit_game_group_comment_path(@group.game, @group, comment),
+          remote: true,
+          class: 'btn btn-sm btn-secondary',
+          id: "edit-btn-#{comment.id}" %>
+      <%= link_to "削除", game_group_comment_path(@group.game, @group, comment),
+          method: :delete,
+          data: { confirm: '本当に削除しますか？' }, 
+          class: 'btn btn-sm btn-danger' %>
+    <% end %>
+  </td>
+</tr>

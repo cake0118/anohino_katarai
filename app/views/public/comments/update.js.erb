@@ -1,0 +1,5 @@
+const updatedComment = document.querySelector(`#comment-<%= @comment.id %>`);
+updatedComment.outerHTML = '<%= j render partial: "public/comments/comment", locals: { comment: @comment } %>';
+
+<%# コメントを更新後、表示に戻す %>
+document.querySelector(`#comment-<%= @comment.id %>`).outerHTML = '<%= j render partial: "public/comments/comment", locals: { comment: @comment } %>';

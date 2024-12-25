@@ -26,6 +26,8 @@ class Public::GroupsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = @group.comments
   end
 
   def join
