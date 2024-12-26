@@ -32,7 +32,7 @@ class Public::GroupsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @group.comments
-    @user = User.find(params[:id])
+    @user == current_user
   end
 
   def join
