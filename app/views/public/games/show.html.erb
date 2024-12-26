@@ -7,4 +7,44 @@
       <%= @game.body %>
     </div>
   </div>
+
+  <% if current_user.present? && current_user.email != 'guest@example.com' %>
+    <div class="row">
+      <div class="col-4 m-3">
+        <%= link_to "グループの新規登録", new_game_group_path(@game), class: 'btn btn-primary w-100' %>
+      </div>
+    </div>
+  <% else %>
+
+  <% end %>
+
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">グループ名</th>
+          <th scope="col">入場</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.title %></td>
+            <td>
+              <% if user_signed_in? %>
+                <% if group.users.include?(current_user) %>
+                  <%= link_to "参加中のため入場可", game_group_path(@game, group), class: 'btn btn-secondary' %>
+                <% else %>
+                  <%= link_to "参加する", join_game_group_path(@game, group), method: :post, class: 'btn btn-primary' %>
+                <% end %>
+              <% else %>
+                <%# 非ログイン時は何も表示しない %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

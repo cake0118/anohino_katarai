@@ -25,6 +25,16 @@ class Public::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
 
+  def guest_sign_in
+    guest_user = User.find_or_create_by(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.hex(16)  # ゲスト用のパスワードをランダムに設定
+      user.handle_name = "ゲストユーザー"
+      user.is_active = true  # 必要に応じて、ゲストユーザーのアクティブ状態を設定
+    end
+    sign_in guest_user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
+
   def after_sign_in_path_for(resource)
     user_path(current_user)
   end
