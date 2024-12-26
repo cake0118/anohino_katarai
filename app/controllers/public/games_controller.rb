@@ -17,8 +17,11 @@ class Public::GamesController < ApplicationController
 
   def create
     @game = current_user.games.new(game_params)
-    @game.save
-    redirect_to user_path(current_user)
+    if @game.save
+       redirect_to user_path(current_user),notice: '投稿しました'
+    else
+      redirect_to new_game_path, alert: '投稿に失敗しました'
+    end
   end
 
   private
@@ -30,6 +33,6 @@ class Public::GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit(:title, :title_kana, :body, :user_id, :headware_id)
+    params.require(:game).permit(:title, :title_kana, :body, :headware_id)
   end
 end

@@ -19,16 +19,20 @@ class Public::GroupsController < ApplicationController
       else
         # 参加登録が失敗した場合はグループも削除
         @group.destroy
-        render :new, alert: 'グループ作成に失敗しました。'
+        flash[:alert] = 'グループ作成に失敗しました。'
+        render :new
       end
     else
-      render :new, alert: 'グループ作成に失敗しました。'
+      @group = @game.groups.new(group_params)
+      flash[:alert] = 'グループ作成に失敗しました。'
+      render :new
     end
   end
 
   def show
     @comment = Comment.new
     @comments = @group.comments
+    @user = User.find(params[:id])
   end
 
   def join
