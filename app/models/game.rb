@@ -6,7 +6,7 @@ class Game < ApplicationRecord
   has_many :groups, dependent: :destroy
 
   # タイトルを必須にするかつ重複を防ぐ
-  validates :title, presence: true, uniqueness: true, uniqueness: { scope: :game_id, message: "は既に存在します。" }
+  validates :title, presence: true, uniqueness: true, uniqueness: { message: "は既に存在します。" }
 
   def self.search_by_katakana(first_character)
     # 五十音順の最初の文字を取得して検索

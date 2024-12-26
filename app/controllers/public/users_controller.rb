@@ -13,8 +13,12 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: '更新しました'
+    else
+      @user = current_user
+      redirect_to edit_user_path(@user), alert: '更新に失敗しました'
+    end
   end
 
   def unsubscribe

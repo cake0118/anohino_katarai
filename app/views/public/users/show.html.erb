@@ -4,22 +4,33 @@
     <h1><%= @user.handle_name %>のマイページ</h1>
   </div>
 
-  <div class="row m-3">
-    <div class="col-4 mr-3">
-      <%= link_to "H.N変更", edit_user_path(@user), class: 'btn btn-success w-100' %> 
+  <% if current_user.email == 'guest@example.com' %>
+    <%# 何も表示しない %>
+  <% elsif @user == current_user %>
+    <div class="row m-3">
+      <div class="col-4 mr-3">
+        <%= link_to "H.N変更", edit_user_path(@user), class: 'btn btn-success w-100' %> 
+      </div>
+      <div class="col-4 ml-3">
+        <%= link_to "退会する", unsubscribe_user_path(current_user.id), class: 'btn btn-danger w-100' %>
+      </div>
     </div>
-    <div class="col-4 ml-3">
-      <%= link_to "退会する", unsubscribe_user_path(current_user.id), class: 'btn btn-danger w-100' %>
-    </div>
-  </div>
+  <% else %>
+    <%# 何も表示しない %>
+  <% end %>
+
 
   <div class="row m-5">
     <h2>投稿一覧</h2>
   </div>
 
-  <div class="row m-3">
-    <%= link_to "新規登録", new_game_path, class: 'btn btn-primary' %>
-  </div>
+  <% if @user == current_user && current_user.email != 'guest@example.com' %>
+    <div class="row m-3">
+      <%= link_to "新規登録", new_game_path, class: 'btn btn-primary' %>
+    </div>
+  <% else %>
+    <%# ゲストログインや非ログイン時も表示しない %>
+  <% end %>
 
   <div class="row m-3">
    <table class="table">
