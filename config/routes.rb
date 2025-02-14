@@ -45,6 +45,7 @@ Rails.application.routes.draw do
         resources :comments, only: [:destroy]
       end
     end
+    resources :searches, only: [:index]
   end
 
   
